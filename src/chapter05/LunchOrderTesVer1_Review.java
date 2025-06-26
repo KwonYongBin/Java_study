@@ -3,6 +3,8 @@ package chapter05;
 public class LunchOrderTesVer1_Review {
 
 	public static void main(String[] args) {
+		
+
 		//메뉴판
 		System.out.println("***********************************************");
 		System.out.println("\t Welcome to Food mart!!!");
@@ -14,7 +16,6 @@ public class LunchOrderTesVer1_Review {
 		System.out.println("***********************************************");
 		System.out.println("*****Food Mart에 오신것을 환영합니다");
 
-		
 		// 1. 메뉴 선택
 
 		// 2.주문 메뉴 결제
