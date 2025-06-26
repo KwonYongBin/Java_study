@@ -30,7 +30,7 @@ public class Test {
 		System.out.print("심장질환(유:1, 무:0> ");
 		dease = (input.nextInt() == 1 )? true: false;
 		
-//		System.out.println(name + "," + age + "," + height + "," + parent + "," + dease + ",");
+		// System.out.println(name + "," + age + "," + height + "," + parent + "," + dease + ",");
 		
 		String result = (((age >= 6) && (height >= 120)) || ((age < 6) && (height >= 120) && (parent==true))) 
 				&& (dease == false)? "탑승 가능" : "탑승 불가능";
