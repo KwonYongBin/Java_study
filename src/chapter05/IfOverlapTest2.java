@@ -2,7 +2,7 @@ package chapter05;
 
 import java.util.Scanner;
 
-public class MathEngTest2 {
+public class IfOverlapTest2 {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
