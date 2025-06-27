@@ -17,7 +17,7 @@ public class DrinkOrderTestVer1 {
 		String menuName = "";
 		String menuPriceOutput = "";
 		boolean menuFlag = true;
-		boolean menuch = true;
+		boolean a = true;
 		
 		// step 1 : 메뉴판 출력
 		System.out.println("[시작]");
@@ -42,15 +42,15 @@ public class DrinkOrderTestVer1 {
 							case 4 : menuName = "모카라떼"; 		menuPrice = 3800; break;
 							case 5 : menuName = "요커트스무디"; 	menuPrice = 5000; break;
 							default :
-							System.out.println("준비중인 메뉴입니다. 다시 선택 바랍니다.");
+							System.out.println("준비중인 메뉴입니다. 다시 선택 바랍니다. > ");
 						}//switch
-					
-					
-					menuPriceOutput = String.format("%,d", new Object[] {Integer.valueOf(menuPrice)});
-				    // System.out.print(menuName);
+
+						menuPriceOutput = String.format("%,d", new Object[] {Integer.valueOf(menuPrice)});
+						// System.out.print(menuName);
+				
 					menuFlag = false;
 					} else {
-	//					System.out.println("올바르지 않은 값입니다. 다시 입력해주세요.");
+						System.out.println("올바르지 않은 값입니다. 다시 입력해주세요.");
 						scan.next();
 					}// if 사실상 boolean이 종료되는 시점.
 
