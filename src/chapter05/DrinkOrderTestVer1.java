@@ -46,24 +46,23 @@ public class DrinkOrderTestVer1 {
 						}//switch
 
 						menuPriceOutput = String.format("%,d", new Object[] {Integer.valueOf(menuPrice)});
-						// System.out.print(menuName);
+						menuFlag = false;
 				
-					menuFlag = false;
 					} else {
 						System.out.println("올바르지 않은 값입니다. 다시 입력해주세요.");
 						scan.next();
 					}// if 사실상 boolean이 종료되는 시점.
 
 		} //while
-		System.out.println("=> 주문 메뉴 : " + menuName + ", 결제 예정 금액 :" + menuPriceOutput + "원");
+		System.out.println("=> 주문 메뉴 : " + menuName + "\n=> 결제 예정 금액 : " + menuPriceOutput + "₩");
 		System.out.println("--step1 종료--");
 		
 		
 		
 		
 		
-		System.out.println("[종료]");
-		System.out.println("이용해 주셔서 감사합니다.");
+//		System.out.println("[종료]");
+//		System.out.println("이용해 주셔서 감사합니다.");
 	}// main
 
 }// class
