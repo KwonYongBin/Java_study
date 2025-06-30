@@ -50,10 +50,10 @@ public class DrinkOrderTestVer1 {
 							case 5 : menuName = "딸기 쉐이크"; 	menuPrice = 5000; menuFlag = false; break;
 							/* 	while문 흐름 정리
 							 	while 조건식에 menuFlag(boolean 변수)를 사용하여 반복 제어
-							 	menuFlag를 true로 초기화해 반복 시작
+							 	menuFlag를 true로 초기값을 설정하여 제어
 							 	정상 메뉴 선택 시 menuFlag = false로 변경해 반복 종료 유도
-							 	없는 번호 입력 시 menuFlag는 그대로 true 유지 → 반복 계속
-							 	switch문으로 메뉴 선택 분기 처리하며 반복 진행
+							 	없는 번호 입력 시 menuFlag는 그대로 true 유지 → degault가 나타날때 까지 반복 계속하여 재입력을 유도
+							 	정상 case를 입력할때 까지 반복하여 정상적인 번호를 입력할때까지 반복 정상적인 번호를 입력하면 다음 while로 진행
 							 */
 							case 8 : 
 								System.out.println("프로그램을 종료합니다.");

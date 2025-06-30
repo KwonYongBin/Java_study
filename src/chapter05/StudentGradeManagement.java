@@ -29,18 +29,25 @@ public class StudentGradeManagement {
             	System.out.println("[학생 등록]");
             	System.out.print("이름 입력 => ");
             	name = input.next(); // 문자는 .next() 메서드를 사용
+            	
             	System.out.print("학번 입력 => ");
             	stuNo = input.nextInt(); // 정수는 .nextInt() 메서드를 사용
+            	
             	System.out.print("학년 입력(숫자) => ");
             	grade = input.nextInt();
+            	
             	System.out.print("전공 입력 => ");
             	specialty = input.next();
+            	
             	System.out.print("국어 점수 입력 => ");
             	kLang = input.nextInt();
+            	
             	System.out.print("수학 점수 입력 => ");
             	math = input.nextInt();
+            	
             	System.out.print("영어 점수 입력 => ");
             	eng = input.nextInt();
+            	
             	System.out.println("[등록 완료]");
             	System.out.println("이름 : " + name + "\n학번 : " + stuNo + "\n학년 : " + grade + "학년 " + "\n전공 : " + specialty + "\n국어 점수 : " + kLang + "\n수학 점수 : "+ math + "\n영어 점수 : " + eng);
             	
@@ -53,19 +60,23 @@ public class StudentGradeManagement {
             	System.out.println("[학생 성적 검색]");
             	if(stuFlag) {     		
             	}
+            	
             } else if(menu == 4) {
             	System.out.println("[성적 수정]");
             	if(stuFlag) {    		
             	}
+            	
             } else if(menu == 5) {
             	System.out.println("[학생 삭제]");
             	if(stuFlag) {   		
             	}
+            	
             } else if(menu == 9) {
             	System.out.println("[프로그램을 종료합니다.]");
             	if(stuFlag) {
             		System.exit(9);
             	}
+            	
             }
 			
 			
@@ -74,4 +85,5 @@ public class StudentGradeManagement {
 		
 	}
 
+	}
 }
