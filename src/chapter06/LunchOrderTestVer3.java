@@ -176,20 +176,24 @@ public class LunchOrderTestVer3 {
 						count = 0;		// order
 						paymentCount++; // payment
 					break;
-				case 4:
-						System.out.println("-----------------------------------------");
-						System.out.println("\t결제 내역");
-						System.out.println("-----------------------------------------");
-						System.out.println("번호 \t주문메뉴 \t결제금액 \t입급액 \t잔돈");
-						System.out.println("-----------------------------------------");
-						for(int i = 0; i < paymentCount; i++) {
-							System.out.print((i+1)+" ");
-							System.out.print(paymentMenuList[i]+"\t");
-							System.out.print(totalAmountList[i]+"\t");
-							System.out.print(paidAmountList[i]+"\t");
-							System.out.print(changeList[i]+"\n");
+				case 4: // 결제 내역
+						if(paymentCount != 0) {
+							System.out.println("-----------------------------------------");
+							System.out.println("\t결제 내역");
+							System.out.println("-----------------------------------------");
+							System.out.println("번호 \t주문메뉴 \t결제금액 \t입급액 \t잔돈");
+							System.out.println("-----------------------------------------");
+							for(int i = 0; i < paymentCount; i++) {
+								System.out.print((i+1)+" ");
+								System.out.print(paymentMenuList[i]+"\t");
+								System.out.print(totalAmountList[i]+"\t");
+								System.out.print(paidAmountList[i]+"\t");
+								System.out.print(changeList[i]+"\n");
+							}
+							System.out.println("-----------------------------------------");			
+						} else {
+							System.out.println("결제 내역 없음");
 						}
-						System.out.println("-----------------------------------------");
 					break;
 				case 9:
 					System.out.println("-- 프로그램 종료 --");
