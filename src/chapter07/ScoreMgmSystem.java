@@ -2,34 +2,48 @@ package chapter07;
 
 import java.util.Scanner;
 
+/*
+ * - 학생 3명의 점수를 입력 받는다.
+ * - 한 명 입력 후 계속 입력 여부를 메시지로 출력 후 입력 받는다.
+ */
+
+
+
 public class ScoreMgmSystem {
 	//Field
 	 String admin;
 	 Student student;
 	 Scanner scan = new Scanner(System.in);
-	 Student[] sList = new Student[0];
-	 
+	 Student[] sList = new Student[3];
 	//Constructor
 	public ScoreMgmSystem() {}
 	
 	public void insert() {
 		//Method
+//		student = new Student();
 		System.out.println("-- insert --");
-		student = new Student();
 		
-		System.out.print("학생명 > ");
-		student.name = scan.next();
-		
-		System.out.println("국어 점수 > ");
-		student.kor = scan.nextInt();
-		
-		System.out.println("영어 점수 > ");
-		student.eng = scan.nextInt();
-		
-		System.out.println("수학 점수 > ");
-		student.math = scan.nextInt();
-		
-		System.out.println("등록 완료");
+		for(int i = 0; i < sList.length; i++) {
+			sList[i] = new Student();
+			System.out.print("학생명 > ");
+			student.name = scan.next();
+			
+			System.out.println("점수 > ");
+			student.kor = scan.nextInt();
+			
+			System.out.println("영어 점수 > ");
+			student.eng = scan.nextInt();
+			
+			System.out.println("수학 점수 > ");
+			student.math = scan.nextInt();
+
+			System.out.println("계속? (계속: 아무키, 종료:n >");
+			
+			if(scan.next().equals("n") ) {
+				break;
+			}
+			System.out.println("등록 완료");
+		} 
 		
 	}
 	
