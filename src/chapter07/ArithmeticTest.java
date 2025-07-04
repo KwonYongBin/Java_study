@@ -1,0 +1,29 @@
+package chapter07;
+
+public class ArithmeticTest {
+
+	public static void main(String[] args) {
+		Arithmetic arithmetic = new Arithmetic();
+		ArithmeticOverloading arithmetic_ol = new ArithmeticOverloading();
+		
+		System.out.println("arithmetic_ol.add > " + arithmetic_ol.add(10, 20));
+		System.out.println("arithmetic_ol.add > " + arithmetic_ol.add(3.14, 1.5));
+		System.out.println("arithmetic_ol.add > " + arithmetic_ol.add("100", "200"));
+		System.out.println("arithmetic_ol.add > " + arithmetic_ol.add(1,2,3,4,5,6,7,8,9,10));
+		System.out.println("arithmetic_ol.add > " + arithmetic_ol.add("1", "2", "3","4", "5", "6","7", "8", "9", "10"));
+
+		int add = arithmetic.add(10, 20);
+		int sub = arithmetic.sub(10, 20);
+		//int mul = arithmetic.mul(3.14, 20);  결과는 실수값
+		double mul = arithmetic.mul(3.14, 20); // 결과는 실수값
+		int div = arithmetic.div(10, 20);
+		int mod = arithmetic.mod(10, 20);
+		
+		System.out.println("add = " + add);
+		System.out.println("add = " + sub);
+		System.out.println("add = " + mul);
+		System.out.println("add = " + div);
+		System.out.println("add = " + mod);
+	}
+
+}

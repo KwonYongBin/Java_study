@@ -26,16 +26,16 @@ public class ScoreMgmSystem {
 		for(int i = 0; i < sList.length; i++) {
 			sList[i] = new Student();
 			System.out.print("학생명 > ");
-			student.name = scan.next();
+			sList[i].name = scan.next();
 			
 			System.out.println("점수 > ");
-			student.kor = scan.nextInt();
+			sList[i].kor = scan.nextInt();
 			
 			System.out.println("영어 점수 > ");
-			student.eng = scan.nextInt();
+			sList[i].eng = scan.nextInt();
 			
 			System.out.println("수학 점수 > ");
-			student.math = scan.nextInt();
+			sList[i].math = scan.nextInt();
 
 			System.out.println("계속? (계속: 아무키, 종료:n >");
 			
