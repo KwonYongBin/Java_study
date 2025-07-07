@@ -8,9 +8,11 @@ public class ArithmeticOverloading {
 	public int add(int x, int y) {
 		return x + y;
 	}
+	
 	public int add(double x, double y) {
 		return (int)( x + y);
 	}
+	
 	public int add(String x, String y) {
 		int xx = Integer.valueOf(x);
 		int yy = Integer.valueOf(y);

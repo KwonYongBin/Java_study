@@ -16,4 +16,4 @@ public class Student {
 	public int getAvg() {
 		return (kor + eng + math)/3;
 	}
-}
+} //추상화 데이터

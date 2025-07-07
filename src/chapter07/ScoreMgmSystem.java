@@ -29,7 +29,7 @@ public class ScoreMgmSystem {
 		System.out.println("3. 학생 성적 검색");		
 		System.out.println("4. 학생 성적 수정");		
 		System.out.println("5. 학생 삭제");		
-		System.out.println("9. 프로그램 종료");		
+		System.out.println("9. 프로그램 종료");	
 		System.out.println("-----------------------------------------");
 		
 		System.out.print("메뉴선택(숫자)> ");
