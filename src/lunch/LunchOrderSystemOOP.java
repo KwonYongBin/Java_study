@@ -1,4 +1,4 @@
-package chapter07;
+package lunch;
 
 import java.util.Scanner;
 

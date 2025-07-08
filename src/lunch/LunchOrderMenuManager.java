@@ -1,4 +1,4 @@
-package chapter07;
+package lunch;
 
 public class LunchOrderMenuManager {
 	//Field
@@ -7,7 +7,7 @@ public class LunchOrderMenuManager {
 	//Constructor
 	public LunchOrderMenuManager() {}
 	public LunchOrderMenuManager(LunchOrderSystemOOP system) {
-		this.system = system; // 선언을 안하면 가지고있는 값은 null이라서 nullpointinseption에러가 뜬다.
+		this.system = system; // 선언을 안하면 가지고있는 값은 null이라서 null point inseption에러가 뜬다.
 	}
 	
 	// Method\
