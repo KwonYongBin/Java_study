@@ -7,10 +7,15 @@ public class AnimalTest {
 		System.out.println("-- AnimalTest 클래스 실행 --");
 		
 		//사자, 호랑이 객체 생성
-		Animal lion = new Animal(); //heap에 생성
-		Animal tiger = new Animal();//heap에 생성
-		Animal giraffe = new Animal();  //heap에 생성
+		Animal lion = new Animal(); 
+		Animal tiger = new Animal();
+		Animal giraffe = new Animal(); 
 		Animal elephant = new Animal(); //heap에 생성
+		
+		Animal2 lion2 = new Animal2("심바", 5);
+		Animal2 tiger2 = new Animal2("호돌이");
+		Animal2 elephant2 = new Animal2(); //heap에 생성
+		
 		
 		lion.name = "심바";
 		lion.age = 5;
@@ -32,6 +37,31 @@ public class AnimalTest {
 		
 		System.out.println("giraffe.name = " + giraffe.name);
 		System.out.println("elephant.name = " + elephant.name);
+		
+		
+		System.out.println("=> 생성자 초기화");
+		System.out.println("lion2.name = " + lion2.name);
+		System.out.println("lion2.name = " + lion2.age);
+		System.out.println("lion2.name = " + tiger2.name);
+		System.out.println("lion2.name = " + tiger2.age);
+		System.out.println("elephant2.name = " + elephant2.name);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

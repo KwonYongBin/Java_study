@@ -6,6 +6,7 @@ public class DrinkOrderItem {
 	String name; 	//	메뉴 이름
 	int price; 		// 	메뉴 가격
 	int qty; 		//	잔돈
+	
 	//Constructor
 	//Method
 }
