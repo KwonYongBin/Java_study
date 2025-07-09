@@ -15,6 +15,8 @@ public class VendingMachine {
 	Menu orderMenu;
 	int change;		//잔돈
 	
+	public static final int EXIT = 9; //클래스면, 상수명
+	
 	
 	public VendingMachine(User user) {
 		this("예거체프", user);
@@ -53,11 +55,18 @@ public class VendingMachine {
 	 */
 	public void selectMenu() { // 정확한 메뉴 선택
 		System.out.println("=> 메뉴를 선택해주세요");
+		System.out.println("=> 취소는 [" + VendingMachine.EXIT + "]를 입력해주세요");
 		int menuNo = user.selectMenu();
-		if (menuCheck(menuNo)) {
-			placeOrder(menuNo);			
+		if(menuNo != VendingMachine.EXIT) {
+			if (menuCheck(menuNo)) {
+				placeOrder(menuNo);			
+			} else {
+				selectMenu();
+			}
 		} else {
-			selectMenu();
+			System.out.println("동전을 반환하고, 프로그램을 종료합니다");
+			System.out.println("반환 동전 : " + totalCoin);
+			System.exit(0);
 		}
 	}
 	
@@ -109,7 +118,7 @@ public class VendingMachine {
 		int price = menuList[menuList.length-1].getPrice();
 		if(change >= price) {
 			totalCoin = change;
-			System.out.print("잔돈 : " + change);
+			System.out.print("잔돈 : " + change + "\n");
 			createOrderMenuList(totalCoin);
 			showMemuList("주문 가능 메뉴 리스트");
 			selectMenu();
@@ -225,21 +234,3 @@ public class VendingMachine {
 		}
 	}
 }// class - VendingMachine
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
