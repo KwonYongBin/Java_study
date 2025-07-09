@@ -14,15 +14,7 @@ public class User {
 		scan = new Scanner(System.in);
 	}
 	
-	//Method
-	public boolean coinCheck(int coin) {
-		boolean result = false;
-		if(coin == 100 || coin == 500) {
-			result = true;
-		}
-		return false;
-	}
-	
+	//Method	
 	/*
 	 * 동전 입력
 	 */
