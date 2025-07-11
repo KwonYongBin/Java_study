@@ -23,12 +23,13 @@ public class BankMan {
 	  */
 	 public void checkPaper(AccountPaperVo accountPaper, Customer customer) {
 		 this.customer = customer;
+		 this.accountPaper = accountPaper;
 		 
 		 System.out.println("은행직원 : [" + name + "] 출금 용지 정보를 확인하는 중입니다..");
 		 if(accountPaper.getName() == null) {
 			 System.out.println("은행직원 : [" + name + "] 이름을 입력해주세요");
 			 System.out.print("[고객 : " + customer.getName() + "] 이름 입력>");
-			 customer.getScan().next();
+			 String name = customer.getScan().next();
 			 accountPaper.setName(name);
 			 System.out.println("고객명 => " + accountPaper.getName());
 			 

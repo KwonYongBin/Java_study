@@ -24,7 +24,15 @@ public class Customer {
 		return scan;
 	}
 	
-	
+	public void setAccountPaper(AccountPaperVo accountPaper) {
+		System.out.println("==========================================");
+		this.accountPaper = accountPaper;
+		this.accountPaper.setName(this.name);
+		this.accountPaper.setAccountNumber(this.accountNumber);
+		this.accountPaper.setPassword(this.password);
+		this.accountPaper.setMoney(this.money);
+		System.out.println("==========================================");
+	}
 	public String getName() {
 		return name;
 	}
@@ -52,14 +60,7 @@ public class Customer {
 	public AccountPaperVo getAccountPaper() {
 		return accountPaper;
 	}
-	public void setAccountPaper(AccountPaperVo accountPaper) {
-		this.accountPaper = accountPaper;
-		this.accountPaper.setName(this.name);
-		this.accountPaper.setAccountNumber(this.accountNumber);
-		this.accountPaper.setPassword(this.password);
-		this.accountPaper.setMoney(this.money);
-		
-	}
+
 	
 	
 }
