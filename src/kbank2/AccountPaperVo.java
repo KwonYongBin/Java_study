@@ -9,7 +9,7 @@ public class AccountPaperVo {
 	private String accountNumber;
 	private String password;
 	private int money;
-	private static AccountPaperVo accountpaper = new AccountPaperVo();
+	private static AccountPaperVo accountPaper = new AccountPaperVo();
 	
 	private AccountPaperVo() {}
 	
