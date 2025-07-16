@@ -9,13 +9,13 @@ public class Variable {
 		double aged = 10.0;
 		boolean flag = true; // true(1), false(0)
 		//변수에서 문자는 싱글쿼테이션만을 사용한다.
-		char name = '홍'; 
+		char name = '홍'; //char은 문자 데이터 타입을 저의하며 문자와 문자열을 의미가 다르다.
 		char name2 = '길';
 		char name3 = '동';
 		String sname = "홍길동";
 		
 		// 참조 자료형 변수 정의
-		// 참조형은 stack 공간에 먼저 저장이 되고 heap에서 주소가 생성이 되면
+		// 참조형은 stack 공간에 먼저 저장이 되고 heap에서 주소가 생성이 되면 stack 공간에 주속 할당되고 heap에 레퍼런스 한다.
 		String sname2 = new String("홍길동"); //(참조형 작성 방식)
 		
 		// ** String 클래스는 기본형과 참조형으로 모두 사용 가능!!
@@ -25,8 +25,8 @@ public class Variable {
 		System.out.println(age);
 		System.out.println(aged);
 		System.out.println(flag);
-		System.out.print(name);
-		System.out.print(name2);
+		System.out.println(name);
+		System.out.println(name2);
 		System.out.println(name3);
 		System.out.println(sname);
 		System.out.println(sname2);

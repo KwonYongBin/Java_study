@@ -39,22 +39,21 @@ public class DrinkOrderTestVer1 {
 
 		System.out.print("주문 메뉴 번호 입력(번호)> ");
 		while(menuFlag) {
+			/* 	while문 흐름 정리
+			 	while 조건식에 menuFlag(boolean 변수)를 사용하여 반복 제어
+			 	menuFlag를 true로 초기값을 설정하여 제어
+			 	정상 메뉴 선택 시 menuFlag = false로 변경해 반복 종료 유도
+			 	없는 번호 입력 시 menuFlag는 그대로 true 유지 → degault가 나타날때 까지 반복 계속하여 재입력을 유도
+			 	정상 case를 입력할때 까지 반복하여 정상적인 번호를 입력할때까지 반복 정상적인 번호를 입력하면 다음 while로 진행
+			 */
 				if(scan.hasNextInt()) {
 					menuChoice = scan.nextInt();
 						switch (menuChoice) {
-						
 							case 1 : menuName = "아메리카노"; 		menuPrice = 2800; menuFlag = false; break;
 							case 2 : menuName = "바닐라 라떼"; 	menuPrice = 3500; menuFlag = false; break;
 							case 3 : menuName = "모카라떼"; 		menuPrice = 4000; menuFlag = false; break;
 							case 4 : menuName = "요커트 스무디"; 	menuPrice = 3800; menuFlag = false; break;
 							case 5 : menuName = "딸기 쉐이크"; 	menuPrice = 5000; menuFlag = false; break;
-							/* 	while문 흐름 정리
-							 	while 조건식에 menuFlag(boolean 변수)를 사용하여 반복 제어
-							 	menuFlag를 true로 초기값을 설정하여 제어
-							 	정상 메뉴 선택 시 menuFlag = false로 변경해 반복 종료 유도
-							 	없는 번호 입력 시 menuFlag는 그대로 true 유지 → degault가 나타날때 까지 반복 계속하여 재입력을 유도
-							 	정상 case를 입력할때 까지 반복하여 정상적인 번호를 입력할때까지 반복 정상적인 번호를 입력하면 다음 while로 진행
-							 */
 							case 8 : 
 								System.out.println("프로그램을 종료합니다.");
 								System.exit(0);
