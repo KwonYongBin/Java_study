@@ -1,50 +1,127 @@
 package com.scoremgm.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import com.scoremgm.app.ScoreMgmSystem;
+import com.scoremgm.model.Member;
+import com.scoremgm.repository.ScoreRepository;
+import com.scoremgm.repository.ScoreRepositoryImpl;
+
 public class ScoreServiceImpl implements ScoreService {
 	Scanner scan;
+	ScoreMgmSystem sms;
+	ScoreRepository repository = new ScoreRepositoryImpl();
 	
 	public ScoreServiceImpl() {}
-	public ScoreServiceImpl(Scanner scan) {
-		this.scan = scan;
+	public ScoreServiceImpl(ScoreMgmSystem sms) {
+		this.sms = sms;
+		this.scan = sms.scan;
 	}
-	public void register() {
-		System.out.print("학생명 > ");
-		String name = scan.next();
+	
+	public List createMemberInfo() {
+		String[] labels = {"학생명", "전공", "국어", "영어", "수학"};
+		List memberInfo = new ArrayList();
+		Random rd = new Random();
+		String no = "2025-" + rd.nextInt(1000, 9999); //학번 생성
+		memberInfo.add(no);
 		
-		System.out.print("전공 > ");
-		String department = scan.next();
-		
-		System.out.print("국어 > ");
-		int kor = scan.nextInt();
-		
-		System.out.print("영어 > ");
-		int eng = scan.nextInt();
-		
-		System.out.print("수학 > ");
-		int math = scan.nextInt();
-		
-		//학번 생성 : 2025-랜덤 4자리
-		String no = createNo();
-		System.out.println("no -> " + no);
-		
-		//Member 생성
+		for(int i = 0; i < labels.length; i++) {
+			if(i >= 2) {
+				System.out.print(labels[i] + " > ");
+				memberInfo.add(scan.nextInt());
+			} else {
+				//i = 0, 1
+				System.out.print(labels[i] + " > ");
+				memberInfo.add(scan.next());
+			}
+		}
+		return memberInfo;
 	}
 	
 	/**
-	 * 학번 생성
+	 * 학생정보 저장소(storage)의 갯수 가져오기
 	 */
-	public String createNo(){
-		String no = "2025-";
-		Random rd = new Random();
+	@Override
+	public int getCount() {
+		return repository.getCount();
+	}
+	
+	/**
+	 * 등록
+	 */
+	@Override
+	public void register() {
+		List memberInfo = createMemberInfo();
 		
-		return no += rd.nextInt(1000, 9999);
-	}	
-	public void list() {}
+		Member member = new Member();
+		member.setNo((String)memberInfo.get(0));
+		member.setName((String)memberInfo.get(1));
+		member.setDepartment((String)memberInfo.get(2));
+		member.setKor((int)memberInfo.get(3));
+		member.setEng((int)memberInfo.get(4));
+		member.setMath((int)memberInfo.get(5));
+		
+		if(repository.insert(member)) {
+			System.out.println("=> 등록 완료!!");
+		} else {
+			System.out.println("=> 등록 실패!!");
+		}
+		
+		//메인메뉴 호출
+		sms.showMenu();
+		sms.selectMenu();
+	}
+	/**
+	 * 조회
+	 */
+	@Override
+	public void list() { 
+		if(getCount() != 0) {
+			List<Member> list = repository.findAll();
+			System.out.println("=============================");
+			System.out.println("학번\t이름\t과목\t국어\t영어\t수학");
+			System.out.println("=============================");
+			
+			list.forEach((member) -> {
+				System.out.print(member.getNo() + "\t");
+				System.out.print(member.getName() + "\t");
+				System.out.print(member.getDepartment() + "\t");
+				System.out.print(member.getKor() + "\t");
+				System.out.print(member.getEng() + "\t");
+				System.out.print(member.getMath() + "\n");
+			});
+			
+		} else {
+			System.out.println("=> 등록된 학생이 없습니다.");
+			sms.showMenu();
+			sms.selectMenu();
+		}
+		
+//		for(Member member : list) {
+//			System.out.print(member.getNo() + "\t");
+//			System.out.print(member.getName() + "\t");
+//			System.out.print(member.getDepartment() + "\t");
+//			System.out.print(member.getKor() + "\t");
+//			System.out.print(member.getEng() + "\t");
+//			System.out.print(member.getMath() + "\n");
+//		}
+	}
+	
+	@Override
 	public void search() {}
+	
+	@Override
 	public void update() {}
+	
+	@Override
 	public void delete() {}
-	public void exit() {}
+	
+	@Override
+	public void exit() {
+		System.out.println("=> 프로그램 종료");
+		System.exit(0);
+	}
 }
