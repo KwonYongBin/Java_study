@@ -1,6 +1,7 @@
 package com.scoremgm.repository;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.scoremgm.model.Member;
@@ -8,6 +9,49 @@ import com.scoremgm.model.Member;
 public class ScoreRepositoryImpl implements ScoreRepository{
 	
 	List<Member> storage = new ArrayList<Member>();
+	
+	@Override
+	public void remove(String no) {
+		no = "2025-" + no;
+		Iterator<Member> ie = storage.iterator();
+		while(ie.hasNext()) {
+			Member m = ie.next();
+			if(m.getNo().equals("2025-" + no)) {
+				ie.remove();
+				break;
+			}
+		}
+	}
+	
+	@Override
+	public void update(Member member) {
+		int idx = -1;
+		for(int i = 0; i < storage.size(); i++) {
+			Member m = storage.get(1);
+			if(m.getNo().equals(member.getNo())) {
+				idx = i;
+				break;
+			}
+		}
+		
+		storage.set(idx, member);
+	}
+	
+	@Override
+	public Member find(String no) {
+		no = "2025-" + no;
+		Member member = null;
+		
+		if(no != null) {
+			for(Member m : storage) {
+				if(m.getNo().equals(no)) {
+					member = m;
+				}
+			}
+		} //if
+		
+		return member;
+	}
 	
 	@Override
 	public int getCount() {
