@@ -8,8 +8,10 @@ public class Member {
 	private int eng;
 	private int math;
 	
+	
 	public Member() {}
-
+	
+	
 	public String getNo() {
 		return no;
 	}

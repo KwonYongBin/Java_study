@@ -8,26 +8,27 @@ import com.scoremgm.model.Member;
 
 public class ScoreRepositoryImpl implements ScoreRepository{
 	
-	List<Member> storage = new ArrayList<Member>();
+	List<Member> storage = new ArrayList<Member>(); 
 	
 	@Override
 	public void remove(String no) {
 		no = "2025-" + no;
 		Iterator<Member> ie = storage.iterator();
 		while(ie.hasNext()) {
-			Member m = ie.next();
-			if(m.getNo().equals("2025-" + no)) {
+			Member memeber = ie.next();
+			if(memeber.getNo().equals(no)) {
 				ie.remove();
 				break;
 			}
 		}
 	}
 	
+	
 	@Override
 	public void update(Member member) {
 		int idx = -1;
-		for(int i = 0; i < storage.size(); i++) {
-			Member m = storage.get(1);
+		for(int i=0; i<storage.size();i++) {
+			Member m = storage.get(i);
 			if(m.getNo().equals(member.getNo())) {
 				idx = i;
 				break;
@@ -36,6 +37,7 @@ public class ScoreRepositoryImpl implements ScoreRepository{
 		
 		storage.set(idx, member);
 	}
+	
 	
 	@Override
 	public Member find(String no) {
@@ -46,11 +48,16 @@ public class ScoreRepositoryImpl implements ScoreRepository{
 			for(Member m : storage) {
 				if(m.getNo().equals(no)) {
 					member = m;
-				}
+				}	
 			}
-		} //if
+		}
 		
 		return member;
+	}
+	
+	@Override
+	public List<Member> findAll() {
+		return storage;
 	}
 	
 	@Override
@@ -59,14 +66,8 @@ public class ScoreRepositoryImpl implements ScoreRepository{
 	}
 	
 	@Override
-	public List<Member> findAll(){
-		return storage;
-	}
-	
-	@Override
 	public boolean insert(Member member) {
 		if(member == null) return false;
-		return storage.add(member);
+		return storage.add(member);		
 	}
-
 }
