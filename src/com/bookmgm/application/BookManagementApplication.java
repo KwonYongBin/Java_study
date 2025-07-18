@@ -17,59 +17,57 @@ public class BookManagementApplication {
 	public BookService service;
 	
 	public BookManagementApplication() {
-		service = new DefaultBookService(this);
 		scan = new Scanner(System.in);
+		service = new DefaultBookService(this);
 		showMenu();
 	}
 	
-	
 	/**
-	 * 메뉴
+	 * 메뉴 출력
 	 */
 	public void showMenu() {
 		//배열을 이용하여 메뉴 출력
-		String[] lables = {"도서 등록", "도서 목록", "도서 검색", "도서 수정", "도서 삭제", "종료"};
-		System.out.println("========= 📕📖📚 도서 관리 프로그램 📕📖📚 =========");
-		System.out.println("전체 도서 수량 : " + service.getCount());
+		String[] labels = {"도서 등록", "도서 목록 조회", "도서 검색", "도서 수정", "도서 삭제", "종료"};
+		
+		System.out.println("=== 📕📖📚 도서 관리 시스템 📕📖📚 ===");
+		System.out.println("전체 도서수 :  " + service.getCount());
 		System.out.println("-------------------------------------------------");
-		for(int i = 0; i < lables.length; i++) {
-			System.out.println((i+1) + "." + lables[i]);
-		}
+		for(int i=0;i<labels.length; i++) {
+			System.out.println((i+1) + ".  " + labels[i]);
+		}		
 		System.out.println("-------------------------------------------------");
 		
 		selectMenu();
 	}
 	
 	/**
-	 * 메뉴 선택
+	 * 메뉴선택
 	 */
 	public void selectMenu() {
 		System.out.print("메뉴(숫자)> ");
 		if(scan.hasNextInt()) {
 			
 			switch(scan.nextInt()) {
-				//상수 변수에 각각 값을 부여하고 해다 값을 사용자가 입력하면 해당 케이스를 출력한다.
-				case REGISTER:	service.register();		break;
-				case LIST:		service.list();			break;
-				case SEARCH: 	service.search();		break;
-				case UPDATE:	service.update();		break;
-				case DELETE:	service.delete();		break;
-				case EXIT:		service.exit();			break;
-				default:	
-					System.out.println("=> 메뉴 준비중 입니다.");
-					selectMenu();					
-			}			
-			
+			//상수 변수에 각각 값을 부여하고 해다 값을 사용자가 입력하면 해당 케이스를 출력한다.
+			case REGISTER:	service.register();		break;
+			case LIST:		service.list();			break;
+			case SEARCH: 	service.search();		break;
+			case UPDATE:	service.update();		break;
+			case DELETE:	service.delete();		break;
+			case EXIT:		service.exit();			break;
+			default:	
+				System.out.println("=> 메뉴 준비중 입니다.");
+				selectMenu();	
+			}
 		} else {
 			System.out.println("🚫 올바르지 않은 형식입니다. 다시 선택해주세요");
 			scan.next();
 			selectMenu();
 		}
 	}
-
+	
 	public static void main(String[] args) {
 		new BookManagementApplication();
-
 	}
-
+	
 }

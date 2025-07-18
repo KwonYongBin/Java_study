@@ -6,21 +6,20 @@ import java.util.List;
 
 import com.bookmgm.model.Book;
 
-public class InMemoryBookRepository implements BookRepository {
+public class AladinBookRepository implements BookRepository{
 	
 	List<Book> library = new ArrayList<Book>();
 	
-	public InMemoryBookRepository() {
-		System.out.println("** 교육센터 도서관 생성 완료!**");
+	public AladinBookRepository() {
+		System.out.println("** 알라딘 도서관 생성 완료 **");
 	}
 	
 	@Override
 	public boolean insert(Book book) {
 		if(book != null) {
-			return library.add(book);		
+			return library.add(book);
 		} else {
 			return false;
-			
 		}
 	}
 	
@@ -30,20 +29,21 @@ public class InMemoryBookRepository implements BookRepository {
 	}
 	
 	@Override
-	public Book select(String id){
+	public Book select(String id) {
 		Book book = null;
 		
 		for(Book b : library) {
 			if(b.getId().equals(id)) {
-				book  = b; 
+				book = b;
 				break;
 			}
 		}
+		
 		return book;
 	}
 	
 	@Override
-	public void update(Book book){
+	public void update(Book book) {
 		int idx = -1;
 		int i = 0;
 		for(Book b : library) {
@@ -57,13 +57,12 @@ public class InMemoryBookRepository implements BookRepository {
 	}
 	
 	@Override
-	public void remove(String id){
+	public void remove(String id) {
 		Iterator<Book> ie = library.iterator();
 		while(ie.hasNext()) {
 			Book book = ie.next();
-			if(book.getId().equals(id)) {
+			if(book.getId().equals(id)) 
 				ie.remove();
-			}
 		}
 	}
 	
@@ -76,9 +75,10 @@ public class InMemoryBookRepository implements BookRepository {
 		}
 	}
 	
+	
+	
 	@Override
-	public int getCount(){
+	public int getCount() {
 		return library.size();
 	}
-
 }
