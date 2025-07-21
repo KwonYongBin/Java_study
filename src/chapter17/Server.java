@@ -68,6 +68,8 @@ class ClientHandler extends Thread {
 			 while(flag) {
 				 String recievedMsg = input.readUTF();
 				 if(recievedMsg.equals("EXIT")) {
+					 System.out.println("클라이언트 종료");
+					 Server.List.remove(this);
 					 flag = false;
 				 } else {
 					 Server.List.forEach(ch -> {
