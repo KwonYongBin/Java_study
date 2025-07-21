@@ -23,9 +23,10 @@ public class ListTest {
 		list3.add(1.23);		list3.add(100.1234);
 		
 		//2. 데이터 출력 : R(Read)
-		for(int i=0;i<list1.size(); i++) {
+		for(int i = 0; i < list1.size(); i++) {
 			System.out.println(list1.get(i));
 		}
+		
 		for(String str : list2) {
 			System.out.println(str);
 		}
