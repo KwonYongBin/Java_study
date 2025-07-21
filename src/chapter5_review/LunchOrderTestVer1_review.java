@@ -2,7 +2,7 @@ package chapter5_review;
 
 import java.util.Scanner;
 
-public class LunchOrderTestVer1 {
+public class LunchOrderTestVer1_review {
 
 	public static void main(String[] args) {
 		System.out.println("*********************************************************");
