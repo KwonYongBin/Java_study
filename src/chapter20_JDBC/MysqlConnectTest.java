@@ -15,10 +15,12 @@ public class MysqlConnectTest {
 			String url = "jdbc:mysql://127.0.0.1:3306/hrdb2019";
 			String user = "root";
 			String password = "mysql1234";
+			// Connection = mysql과 연결되는 다리역할
 			Connection connection = DriverManager.getConnection(url, user, password);
 			System.out.println("-----> 1단계 성공!!");
 			
 			//2단계 : Statement 객체 생성
+			// Statement = connection이라는 다리를 이용해서 데이터를 주고받는 전달자 역할
 			Statement stmt = connection.createStatement();
 			System.out.println("-----> 2단계 성공!!");
 			
@@ -43,7 +45,6 @@ public class MysqlConnectTest {
 					where dept_id = 'SYS'
 				""";
 			
-			
 			ResultSet rs = stmt.executeQuery(sql);
 			if(rs != null) {
 				System.out.println("-----> 3단계 성공!!");
@@ -51,6 +52,7 @@ public class MysqlConnectTest {
 				//4단계 rs객체에서 데이터 추출
 				System.out.println("-----> 4단계 성공 : 데이터 추출!!");
 				while(rs.next()) {
+					//List<row가 담기는 객체 : EmployeeVo>
 					System.out.print(rs.getInt(1) + "\t");
 					System.out.print(rs.getString(2) + "\t");
 					System.out.print(rs.getString(3) + "\t");
