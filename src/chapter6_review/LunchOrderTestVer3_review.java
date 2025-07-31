@@ -195,7 +195,6 @@ public class LunchOrderTestVer3_review {
 				default:
 					System.out.println("=> 메뉴 준비중!!");
 			}
-			//다시한번 테스트 확인차 올립니다.
 			
 		}//while-menuFlag
 
