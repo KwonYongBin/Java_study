@@ -1,6 +1,9 @@
 package db;
 
+//import java.awt.print.Book;
 import java.util.List;
+
+import com.bookmgm.model.Book;
 import com.scoremgm.model.MemberVo;
 
 public interface GenericRepositoryInterface<T> {
@@ -9,5 +12,6 @@ public interface GenericRepositoryInterface<T> {
 	List<T> findAll();
 	T find(String id);
 	int update(T entity);
-	int remove(String no);
+	int remove(String bid);
+	void close();
 }

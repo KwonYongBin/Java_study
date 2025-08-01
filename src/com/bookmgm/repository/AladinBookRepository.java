@@ -6,7 +6,10 @@ import java.util.List;
 
 import com.bookmgm.model.Book;
 
-public class AladinBookRepository implements BookRepository{
+import db.DBConn;
+
+public class AladinBookRepository extends DBConn
+		implements BookRepository{
 	
 	List<Book> library = new ArrayList<Book>();
 	

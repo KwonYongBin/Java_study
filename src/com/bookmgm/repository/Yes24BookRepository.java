@@ -6,7 +6,9 @@ import java.util.List;
 
 import com.bookmgm.model.Book;
 
-public class Yes24BookRepository implements BookRepository{
+import db.DBConn;
+
+public class Yes24BookRepository extends DBConn implements BookRepository{
 	
 	List<Book> library = new ArrayList<Book>();
 	
