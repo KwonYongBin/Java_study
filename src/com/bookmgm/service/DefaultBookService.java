@@ -23,6 +23,24 @@ public class DefaultBookService implements BookService{
 	
 	
 	/**
+	 * 도서관 선택
+	 */
+	public void selectRepository() {
+		System.out.println("-------------------------------------------------");
+		System.out.println("1. 교육센터\t2. 알라딘\t3. 예스24");
+		System.out.println("-------------------------------------------------");
+		System.out.print("도서관 선택>");
+		int rno = bma.scan.nextInt();
+		if(rno == 1) {
+			repository = new  InMemoryBookRepository(1);
+		} else if(rno == 2) {
+			repository = new InMemoryBookRepository(2);
+		} else if(rno == 3) {
+			repository = new InMemoryBookRepository(3);
+		}		
+	}	
+	
+	/**
 	 * 도서 생성
 	 */
 	public Book createBook() {
@@ -44,7 +62,7 @@ public class DefaultBookService implements BookService{
 	}	
 	
 	/**
-	 * 도서 생성
+	 * 도서 수정
 	 * @param book - old book 정보
 	 * 도서 수정 시 도서 정보를 일부 수정하여 반환
 	 */
@@ -60,25 +78,6 @@ public class DefaultBookService implements BookService{
 		
 		return book;
 	}	
-	
-	/**
-	 * 도서관 선택
-	 */
-	public void selectRepository() {
-		System.out.println("-------------------------------------------------");
-		System.out.println("1. 교육센터\t2. 알라딘\t3. 예스24");
-		System.out.println("-------------------------------------------------");
-		System.out.print("도서관 선택>");
-		int rno = bma.scan.nextInt();
-		if(rno == 1) {
-			repository = new  InMemoryBookRepository(1);
-		} else if(rno == 2) {
-			repository = new InMemoryBookRepository(2);
-		} else if(rno == 3) {
-			repository = new InMemoryBookRepository(3);
-		}		
-	}	
-	
 	
 	/**
 	 * 도서 등록
@@ -139,19 +138,6 @@ public class DefaultBookService implements BookService{
 	}
 	
 	/**
-	 * 도서 출력 - 검색, 수정 시 결과 출력
-	 * @param book
-	 */
-	public void printBook(Book book) {
-		System.out.println("-------------------------------------------------");
-		System.out.print("[" + book.getBid() + "]\t");
-		System.out.print(book.getTitle() + " - ");
-		System.out.print(book.getAuthor() + ",\t");
-		System.out.print(book.getPrice() + "\n");
-		System.out.println("-------------------------------------------------");
-	}	
-	
-	/**
 	 * 도서 수정
 	 */
 	@Override
@@ -202,10 +188,22 @@ public class DefaultBookService implements BookService{
 		repository.close();
 		System.exit(0);
 	}
+	
 	@Override
 	public int getCount() {
 		return repository.getCount();
 	}
-
 	
+	/**
+	 * 도서 출력 - 검색, 수정 시 결과 출력
+	 * @param book
+	 */
+	public void printBook(Book book) {
+		System.out.println("-------------------------------------------------");
+		System.out.print("[" + book.getBid() + "]\t");
+		System.out.print(book.getTitle() + " - ");
+		System.out.print(book.getAuthor() + ",\t");
+		System.out.print(book.getPrice() + "\n");
+		System.out.println("-------------------------------------------------");
+	}
 }

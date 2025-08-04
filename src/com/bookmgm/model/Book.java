@@ -51,6 +51,4 @@ public class Book {
 	public void setBdate(String bdate) {
 		this.bdate = bdate;
 	}
-		
-	
 }

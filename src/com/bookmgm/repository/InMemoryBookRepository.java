@@ -126,6 +126,7 @@ public class InMemoryBookRepository extends DBConn
 		}
 		return bs;
 	}
+
 	public int update(Book entity) {
 		int rows = 0;
 		String sql = "update " + tableName + " set title = ?, author = ?, price = ? where bid = ?";
