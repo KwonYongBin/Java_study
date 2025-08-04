@@ -40,7 +40,7 @@ public class InMemoryMarketBookRepository extends DBConn
 	public List<MarketBookData> findAll() {
 		List<MarketBookData> list = null;
 		String sql = """
-					select btitle, bprice, bauthor, bsubname, bdivision, bdate
+					select bisbn, btitle, bprice, bauthor, bsubname, bdivision, bdate
 					from book_market_books
 				""";
 		try {
@@ -50,12 +50,15 @@ public class InMemoryMarketBookRepository extends DBConn
 				list = new ArrayList<MarketBookData>();
 				while(rs.next()) {
 					MarketBookData book = new MarketBookData();
-					book.setBtitle(rs.getString(1));
-					book.setBprice(rs.getInt(2));
-					book.setBauthor(rs.getNString(3));
-					book.setBsubname(rs.getString(4));
-					book.setBdivision(rs.getString(5));
-					book.setBdate(rs.getString(6));
+					book.setBisbn(rs.getString(1));
+					book.setBtitle(rs.getString(2));
+					book.setBprice(rs.getInt(3));
+					book.setBauthor(rs.getNString(4));
+					book.setBsubname(rs.getString(5));
+					book.setBdivision(rs.getString(6));
+					book.setBdate(rs.getString(7));
+					
+					list.add(book);
 				}
 			}
 		} catch (Exception e) {
@@ -91,15 +94,47 @@ public class InMemoryMarketBookRepository extends DBConn
 	}
 	@Override
 	public int update(MarketBookData entity) {
-		// TODO Auto-generated method stub
-		return 0;
+		int rows = 0;
+		String sql = "update book_market_books set btitle = ?, bprice = ?, bauthor = ?, bsubname = ?, bdivision = ? where bisbn = ?";
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, entity.getBtitle());
+			pstmt.setInt(2, entity.getBprice());
+			pstmt.setString(3, entity.getBauthor());
+			pstmt.setString(4, entity.getBsubname());
+			pstmt.setString(5, entity.getBdivision());
+			pstmt.setString(6, entity.getBisbn());
+			
+			rows = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rows;
 	}
 	@Override
 	public int remove(String bisbn) {
-		// TODO Auto-generated method stub
+		int rows = 0;
+		String sql = "delete from book_market_books where bisbn = ?";
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, bisbn);
+			
+			rows = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 	public int getCount() {
-		return 0;
+		int rows = 0;
+		String sql = "select count(*) as count from book_market_books";
+		try {
+			getPreparedStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) rows = rs.getInt("count");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rows;
 	}
 }

@@ -7,4 +7,5 @@ public interface MarketBookService {
 	void bookUpdate();
 	void bookDeleete();
 	void crateBookExit();
+	int getCount();
 }
