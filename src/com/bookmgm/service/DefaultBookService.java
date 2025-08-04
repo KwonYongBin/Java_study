@@ -11,7 +11,6 @@ import com.bookmgm.repository.InMemoryBookRepository;
 import db.GenericRepositoryInterface;
 
 public class DefaultBookService implements BookService{
-	Scanner scan = new Scanner(System.in);
 	BookManagementApplication bma;
 	GenericRepositoryInterface<Book> repository;
 	
@@ -126,8 +125,8 @@ public class DefaultBookService implements BookService{
 	public void search() {
 		if(getCount() != 0) {
 			System.out.print("도서번호>");
-			String id = scan.next();
-			Book book = repository.find(id);
+			String mid = bma.scan.next();
+			Book book = repository.find(mid);
 			if(book != null) {
 				printBook(book);
 			} else {
@@ -159,7 +158,7 @@ public class DefaultBookService implements BookService{
 	public void update() {
 		if(getCount() != 0) {
 			System.out.print("도서번호>");
-			String no = scan.next();
+			String no = bma.scan.next();
 			Book book = repository.find(no);
 			if(book != null) {				
 				repository.update(createBook(book));					
@@ -182,7 +181,7 @@ public class DefaultBookService implements BookService{
 	public void delete() {
 		if(getCount() != 0) {
 			System.out.print("도서번호>");
-			String id = scan.next();
+			String id = bma.scan.next();
 			Book book = repository.find(id);
 			if(book != null) {
 //				repository.remove(book.getId());

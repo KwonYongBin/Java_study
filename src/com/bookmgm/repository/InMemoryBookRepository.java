@@ -17,6 +17,7 @@ public class InMemoryBookRepository extends DBConn
 	String tableName = "";
 	
 	public InMemoryBookRepository(int rno) {
+		super();
 		createTitle(rno);
 	}
 	
@@ -105,15 +106,12 @@ public class InMemoryBookRepository extends DBConn
 	
 	public Book find(String id) {
 		Book bs = null;
-		String sql = """
-					select bid, title, author, price, isbn, bdate
-					from titleName
-					where bid = ?
-				""";
+		String sql = " select bid, title, author, price, isbn, bdate from " 
+						+ tableName + " where bid = ?";
 		try {
 			getPreparedStatement(sql);
-			rs = pstmt.executeQuery();
 			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				bs = new Book();
 				bs.setBid(rs.getString(1));
@@ -128,17 +126,15 @@ public class InMemoryBookRepository extends DBConn
 		}
 		return bs;
 	}
-	public int update(Book bid) {
+	public int update(Book entity) {
 		int rows = 0;
-		String sql = """
-				upsate book_th
-				set price = ?
-				where bid = ?
-				""";
+		String sql = "update " + tableName + " set title = ?, author = ?, price = ? where bid = ?";
 		try {
 			getPreparedStatement(sql);
-			pstmt.setInt(1, bid.getPrice());
-			pstmt.setString(2, bid.getBid());
+			pstmt.setString(1, entity.getTitle());
+			pstmt.setString(2, entity.getAuthor());
+			pstmt.setInt(3, entity.getPrice());
+			pstmt.setString(4, entity.getBid());
 			
 			rows = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -148,15 +144,12 @@ public class InMemoryBookRepository extends DBConn
 	}
 
 	@Override
-	public int remove(String bid) {
+	public int remove(String id) {
 		int rows = 0;
-		String sql = """
-				delete from book_th
-				where bid = ?
-				""";
+		String sql = " delete from " + tableName + " where bid = ?";
 		try {
 			getPreparedStatement(sql);
-			pstmt.setString(1, bid);
+			pstmt.setString(1, id);
 			
 			rows = pstmt.executeUpdate();
 		} catch (Exception e) {
