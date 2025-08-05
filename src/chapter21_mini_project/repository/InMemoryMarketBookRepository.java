@@ -3,15 +3,39 @@ package chapter21_mini_project.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import chapter21_mini_project.GenericMarketBookRepositoryInterface;
+import chapter21_mini_project.application.MarketBookApplication;
 import chapter21_mini_project.model.MarketBookData;
 import db.DBConn;
 
 public class InMemoryMarketBookRepository extends DBConn 
-			implements GenericMarketBookRepositoryInterface<MarketBookData>{
+			implements MarketRepositoryInterface<MarketBookData>{
+	MarketRepositoryInterface<MarketBookData> repository;
+	MarketBookApplication mma;
 	
-	public InMemoryMarketBookRepository () {
+	static final String BOOKS = "book_market_books";
+	static final String CART = "book_market_cart";
+	static final String MEMBER = "book_market_member";
+	String tableName = "";
+	
+	public InMemoryMarketBookRepository () {}
+	public InMemoryMarketBookRepository (int rno) {
 		super();
+		createTitle(rno);
+	}
+	
+	public void createTitle(int rno) {
+		String name = null;
+		if(rno == 1) {
+			name = "도서 등록";
+			tableName = BOOKS;
+		} else if(rno == 2) {
+			name = "장바구니";
+			tableName = CART;
+		} else if(rno == 3) {
+			name = "회원";
+			tableName = MEMBER;
+		}
+		System.out.println(tableName + "목록");
 	}
 	
 	@Override
@@ -36,6 +60,7 @@ public class InMemoryMarketBookRepository extends DBConn
 		}
 		return rows;
 	}
+	
 	@Override
 	public List<MarketBookData> findAll() {
 		List<MarketBookData> list = null;
@@ -66,6 +91,7 @@ public class InMemoryMarketBookRepository extends DBConn
 		}
 		return list;
 	}
+	
 	@Override
 	public MarketBookData find(String bisbn) {
 		MarketBookData bs = null;
@@ -92,6 +118,7 @@ public class InMemoryMarketBookRepository extends DBConn
 		}
 		return bs;
 	}
+	
 	@Override
 	public int update(MarketBookData entity) {
 		int rows = 0;
@@ -111,6 +138,7 @@ public class InMemoryMarketBookRepository extends DBConn
 		}
 		return rows;
 	}
+	
 	@Override
 	public int remove(String bisbn) {
 		int rows = 0;
@@ -125,6 +153,8 @@ public class InMemoryMarketBookRepository extends DBConn
 		}
 		return 0;
 	}
+	
+	@Override
 	public int getCount() {
 		int rows = 0;
 		String sql = "select count(*) as count from book_market_books";
@@ -136,5 +166,17 @@ public class InMemoryMarketBookRepository extends DBConn
 			e.printStackTrace();
 		}
 		return rows;
+	}
+	@Override
+	public String finId() {
+		return null;
+	}
+	@Override
+	public int removeAll() {
+		return 0;
+	}
+	@Override
+	public MarketBookData find1(String mid) {
+		return null;
 	}
 }

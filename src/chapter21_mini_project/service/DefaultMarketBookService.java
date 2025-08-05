@@ -2,38 +2,54 @@ package chapter21_mini_project.service;
 
 import java.util.List;
 
-import chapter21_mini_project.GenericMarketBookRepositoryInterface;
 import chapter21_mini_project.application.MarketBookApplication;
 import chapter21_mini_project.model.MarketBookData;
+import chapter21_mini_project.repository.MarketRepositoryInterface;
 import chapter21_mini_project.repository.InMemoryMarketBookRepository;
 
 public class DefaultMarketBookService implements MarketBookService {
 	MarketBookApplication mma;
-	GenericMarketBookRepositoryInterface<MarketBookData> repository;
+	MarketRepositoryInterface<MarketBookData> repository;
 	
 	public DefaultMarketBookService() {}
 	public DefaultMarketBookService(MarketBookApplication mma) {
 		this.mma = mma;
 		this.repository = new InMemoryMarketBookRepository();
+		selectRepository();
+	}
+	
+	public void selectRepository() {
+		System.out.println("-------------------------------------------------");
+		System.out.println("1. 도서\t 2. 장바구니 3. 회원");
+		System.out.println("-------------------------------------------------");
+		System.out.print("메뉴 선택 > ");
+		int rno = mma.scan.nextInt();
+		if(rno == 1) {
+			repository = new InMemoryMarketBookRepository(1);
+		} else if(rno == 2) {
+			repository = new InMemoryMarketBookRepository(2);
+		} else if(rno == 3) {
+			repository = new InMemoryMarketBookRepository(3);
+		}
 	}
 	
 	public MarketBookData crateBook() {
 		MarketBookData book = new MarketBookData();
 		
-		System.out.println("도서명 > ");
-		book.setBtitle(mma.scan.next());
+		System.out.print("도서명 > ");
+		book.setBtitle(mma.scan.nextLine());
+		
+		System.out.print("저자 > ");
+		book.setBauthor(mma.scan.nextLine());
 
-		System.out.println("가격 > ");
+		System.out.print("부제 > ");
+		book.setBsubname(mma.scan.nextLine());
+		
+		System.out.print("구분 > ");
+		book.setBdivision(mma.scan.nextLine());
+		
+		System.out.print("가격 > ");
 		book.setBprice(mma.scan.nextInt());
-		
-		System.out.println("저자 > ");
-		book.setBauthor(mma.scan.next());
-
-		System.out.println("부제 > ");
-		book.setBsubname(mma.scan.next());
-		
-		System.out.println("구분 > ");
-		book.setBdivision(mma.scan.next());
 		
 		return book;
 	}
@@ -43,19 +59,19 @@ public class DefaultMarketBookService implements MarketBookService {
 	 * 도서 수정 시 정보 일부 수정 후 반환
 	 */
 	public MarketBookData crateBook(MarketBookData book) {
-		System.out.println("도서명 > ");
-		book.setBtitle(mma.scan.next());
+		System.out.print("도서명 > ");
+		book.setBtitle(mma.scan.nextLine());
 		
-		System.out.println("저자 > ");
-		book.setBauthor(mma.scan.next());
+		System.out.print("저자 > ");
+		book.setBauthor(mma.scan.nextLine());
 		
-		System.out.println("부제 > ");
-		book.setBsubname(mma.scan.next());
+		System.out.print("부제 > ");
+		book.setBsubname(mma.scan.nextLine());
 		
-		System.out.println("구분 > ");
-		book.setBdivision(mma.scan.next());
+		System.out.print("구분 > ");
+		book.setBdivision(mma.scan.nextLine());
 		
-		System.out.println("가격 > ");
+		System.out.print("가격 > ");
 		book.setBprice(mma.scan.nextInt());
 		
 		return book;
